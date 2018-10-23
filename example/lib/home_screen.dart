@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker_ui/image_picker_handler.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
@@ -89,9 +90,20 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   @override
-  userImage(File _image) {
+  userImage(File image) {
+    cropImage(image);
+  }
+
+  Future cropImage(File image) async {
+    File croppedFile = await ImageCropper.cropImage(
+      sourcePath: image.path,
+      ratioX: 1.0,
+      ratioY: 1.0,
+      maxWidth: 512,
+      maxHeight: 512,
+    );
     setState(() {
-      this._image = _image;
+      this._image = croppedFile;
     });
   }
 
