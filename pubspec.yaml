@@ -1,8 +1,8 @@
 name: image_picker_ui
 description: A new Flutter plugin.
-version: 0.0.1
-author:
-homepage:
+version: 0.1.1
+author: Developer Libs<developerlibs@gmail.com>
+homepage: https://github.com/DeveloperLibs/image_picker_ui
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
 
   image_picker: "^0.4.10"
+  image_cropper: ^0.0.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

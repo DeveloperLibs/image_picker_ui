@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker_ui/image_picker_handler.dart';
 import 'package:image_cropper/image_cropper.dart';
 
+
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
   final String title;
@@ -44,9 +45,9 @@ class _HomeScreenState extends State<HomeScreen>
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title,
-        style: new TextStyle(
-          color: Colors.white
-        ),
+          style: new TextStyle(
+              color: Colors.white
+          ),
         ),
       ),
       body: new GestureDetector(
@@ -54,35 +55,35 @@ class _HomeScreenState extends State<HomeScreen>
         child: new Center(
           child: _image == null
               ? new Stack(
-                  children: <Widget>[
+            children: <Widget>[
 
-                    new Center(
-                      child: new CircleAvatar(
-                        radius: 80.0,
-                        backgroundColor: const Color(0xFF778899),
-                      ),
-                    ),
-                    new Center(
-                      child: new Image.asset("assets/photo_camera.png"),
-                    ),
-
-                  ],
-                )
-              : new Container(
-                  height: 160.0,
-                  width: 160.0,
-                  decoration: new BoxDecoration(
-                    color: const Color(0xff7c94b6),
-                    image: new DecorationImage(
-                      image: new ExactAssetImage(_image.path),
-                      fit: BoxFit.cover,
-                    ),
-                    border:
-                        Border.all(color: Colors.red, width: 5.0),
-                    borderRadius:
-                        new BorderRadius.all(const Radius.circular(80.0)),
-                  ),
+              new Center(
+                child: new CircleAvatar(
+                  radius: 80.0,
+                  backgroundColor: const Color(0xFF778899),
                 ),
+              ),
+              new Center(
+                child: new Image.asset("assets/photo_camera.png"),
+              ),
+
+            ],
+          )
+              : new Container(
+            height: 160.0,
+            width: 160.0,
+            decoration: new BoxDecoration(
+              color: const Color(0xff7c94b6),
+              image: new DecorationImage(
+                image: new ExactAssetImage(_image.path),
+                fit: BoxFit.cover,
+              ),
+              border:
+              Border.all(color: Colors.red, width: 5.0),
+              borderRadius:
+              new BorderRadius.all(const Radius.circular(80.0)),
+            ),
+          ),
         ),
       ),
 
@@ -90,20 +91,9 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   @override
-  userImage(File image) {
-    cropImage(image);
-  }
-
-  Future cropImage(File image) async {
-    File croppedFile = await ImageCropper.cropImage(
-      sourcePath: image.path,
-      ratioX: 1.0,
-      ratioY: 1.0,
-      maxWidth: 512,
-      maxHeight: 512,
-    );
+  userImage(File _image) {
     setState(() {
-      this._image = croppedFile;
+      this._image = _image;
     });
   }
 
