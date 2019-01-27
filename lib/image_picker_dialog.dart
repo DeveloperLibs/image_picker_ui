@@ -8,8 +8,10 @@ class ImagePickerDialog extends StatelessWidget {
   ImagePickerHandler _listener;
   AnimationController _controller;
   BuildContext context;
+   int bgColor;
+   int labelColor;
 
-  ImagePickerDialog(this._listener, this._controller);
+  ImagePickerDialog(this._listener, this._controller,this.bgColor,this.labelColor);
 
   Animation<double> _drawerContentsOpacity;
   Animation<Offset> _drawerDetailsPosition;
@@ -83,16 +85,16 @@ class ImagePickerDialog extends StatelessWidget {
                   child: roundedButton(
                       "Camera",
                       EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-                      const Color(0xFF167F67),
-                      const Color(0xFFFFFFFF)),
+                      new Color(bgColor),
+                      new Color(labelColor)),
                 ),
                 new GestureDetector(
                   onTap: () => _listener.openGallery(),
                   child: roundedButton(
                       "Gallery",
                       EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-                      const Color(0xFF167F67),
-                      const Color(0xFFFFFFFF)),
+                      new Color(bgColor),
+                      new Color(labelColor)),
                 ),
                 const SizedBox(height: 15.0),
                 new GestureDetector(
@@ -102,8 +104,8 @@ class ImagePickerDialog extends StatelessWidget {
                     child: roundedButton(
                         "Cancel",
                         EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-                        const Color(0xFF167F67),
-                        const Color(0xFFFFFFFF)),
+                        new Color(bgColor),
+                        new Color(labelColor)),
                   ),
                 ),
               ],

@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen>
     );
 
     imagePicker = new ImagePickerHandler(this, _controller);
-    imagePicker.init();
+    imagePicker.build(0xFFEE6969,0xFFFFFFFF,false);
   }
 
   @override

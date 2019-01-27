@@ -10,23 +10,34 @@ class ImagePickerHandler {
   ImagePickerDialog imagePicker;
   AnimationController _controller;
   ImagePickerListener _listener;
+bool _isCropRequired;
 
   ImagePickerHandler(this._listener, this._controller);
 
   openCamera() async {
     imagePicker.dismissDialog();
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
-    cropImage(image);
+    if(_isCropRequired){
+      cropImage(image);
+    }else{
+      _listener.userImage(image);
+    }
   }
 
   openGallery() async {
     imagePicker.dismissDialog();
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    cropImage(image);
+    if(_isCropRequired){
+      cropImage(image);
+    }else{
+      _listener.userImage(image);
+    }
+
   }
 
-  void init() {
-    imagePicker = new ImagePickerDialog(this, _controller);
+  void build(int bgColor,int labelColor,bool isCropRequired) {
+    _isCropRequired=isCropRequired;
+    imagePicker = new ImagePickerDialog(this, _controller,bgColor,labelColor);
     imagePicker.initState();
   }
 
